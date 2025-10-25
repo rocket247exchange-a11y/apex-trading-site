@@ -1,0 +1,192 @@
+body {
+
+  background: #000000;
+
+  font-family: "Inter", sans-serif;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 100vh;
+
+  color: white;
+
+}
+
+.chat-container {
+
+  width: 400px;
+
+  max-height: 600px;
+
+  background: #0a0a0a;
+
+  border: 2px solid #3a007a;
+
+  border-radius: 20px;
+
+  box-shadow: 0 0 25px rgba(128, 0, 255, 0.3);
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+}
+
+.chat-container h2 {
+
+  text-align: center;
+
+  padding: 20px;
+
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  font-size: 1.5rem;
+
+  letter-spacing: 1px;
+
+}
+
+#chat-box {
+
+  flex: 1;
+
+  overflow-y: auto;
+
+  padding: 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 15px;
+
+}
+
+/* Chat bubble */
+
+.message {
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  animation: fadeIn 0.6s ease-in-out;
+
+}
+
+.avatar {
+
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 50%;
+
+  background: #1a1a1a;
+
+  border: 2px solid #4a00e0;
+
+  flex-shrink: 0;
+
+}
+
+.text {
+
+  background: #111;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  border-radius: 12px;
+
+  padding: 10px 14px;
+
+  max-width: 80%;
+
+  line-height: 1.4;
+
+  color: #fff;
+
+  position: relative;
+
+}
+
+.email {
+
+  font-weight: 600;
+
+  background: linear-gradient(90deg, #8e2de2, #4a00e0);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  font-size: 0.85rem;
+
+}
+
+.level {
+
+  color: #9b6ef3;
+
+  font-size: 0.75rem;
+
+  margin-bottom: 5px;
+
+}
+
+.message-text {
+
+  color: rgba(255,255,255,0.9);
+
+  font-size: 0.9rem;
+
+}
+
+@keyframes fadeIn {
+
+  from {opacity: 0; transform: translateY(15px);}
+
+  to {opacity: 1; transform: translateY(0);}
+
+}
+
+/* Scrollbar hidden */
+
+#chat-box::-webkit-scrollbar {
+
+  display: none;
+
+}
+.avatar {
+
+  width: 40px;
+
+  height: 40px;
+
+  border-radius: 50%;
+
+  background-size: cover;
+
+  background-position: center;
+
+  flex-shrink: 0;
+
+  border: 2px solid rgba(155, 89, 182, 0.8); /* purple glow */
+
+}
