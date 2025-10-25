@@ -1,88 +1,19 @@
-const chatBox = document.getElementById("chat-box");
+const cards = document.querySelectorAll('.award-card');
 
-// Avatar map for consistent faces per user
-const userAvatars = {
-  "candicehel@outlook.com": "https://i.imgur.com/VqUKoWB.jpeg",
-  "HeatherT@gmail.com": "https://i.imgur.com/yTXpLl5.jpeg",
-  "JohnH@outlook.com": "https://i.imgur.com/i5TMqab.gif",
-  "ZaraFX@live.com": "https://i.imgur.com/nS0j18I.gif"
-};
+cards.forEach(card => {
 
-// Example usernames (we’ll reuse some avatars if new names appear)
-const usernames = [
-  "candicehel@outlook.com",
-  "HeatherT@gmail.com",
-  "JohnH@outlook.com",
-  "ZaraFX@live.com",
-  "CryptoDean@outlook.com",
-  "AvaTrade@icloud.com",
-  "KingFXpro@gmail.com",
-  "MayaTrader@protonmail.com",
-  "EliteSignals@live.com",
-  "JasonFX@outlook.com"
-];
+  card.addEventListener('mousemove', e => {
 
-const messages = [
-  "Apex trading signals are underrated honestly!!",
-  "$12k on one live trade session!!? Where has this been all my life!",
-  "Just joined 😥😂 £1,000 already!!",
-  "I copied 3 trades today — all profit 🔥",
-  "Mirror trading changed my portfolio overnight 😳",
-  "Signals are 🔥🔥🔥 can’t believe it’s free!",
-  "Apex Trading is the real deal 💯",
-  "Never thought I’d make money while I sleep 😎",
-  "Level 3 already?? This is too easy 💰",
-  "My first live mirror trade hit +340%!"
-];
+    const rect = card.getBoundingClientRect();
 
-function randomFrom(array) {
-  return array[Math.floor(Math.random() * array.length)];
-}
+    const x = e.clientX - rect.left;
 
-function addMessage(msg) {
-  const div = document.createElement("div");
-  div.classList.add("message");
+    const y = e.clientY - rect.top;
 
-  const avatarImg = userAvatars[msg.email] || "https://i.imgur.com/VqUKoWB.jpeg"; // fallback
+    card.style.setProperty('--x', `${x}px`);
 
-  div.innerHTML = `
-    <div class="avatar" style="background-image:url('${avatarImg}')"></div>
-    <div class="text">
-      <div class="email">${msg.email}</div>
-      <div class="level">LVL ${msg.lvl}</div>
-      <div class="message-text">${msg.text}</div>
-    </div>
-  `;
-  chatBox.appendChild(div);
-  chatBox.scrollTop = chatBox.scrollHeight;
-}
+    card.style.setProperty('--y', `${y}px`);
 
-function showTyping() {
-  const typingDiv = document.createElement("div");
-  typingDiv.classList.add("message");
-  typingDiv.innerHTML = `
-    <div class="avatar" style="background-image:url('https://i.imgur.com/VqUKoWB.jpeg')"></div>
-    <div class="text message-text" style="opacity:0.6;">Typing...</div>
-  `;
-  chatBox.appendChild(typingDiv);
-  chatBox.scrollTop = chatBox.scrollHeight;
-  return typingDiv;
-}
+  });
 
-function startChat() {
-  setInterval(() => {
-    const typing = showTyping();
-
-    setTimeout(() => {
-      typing.remove();
-      const msg = {
-        email: randomFrom(usernames),
-        lvl: Math.floor(Math.random() * 5) + 1,
-        text: randomFrom(messages)
-      };
-      addMessage(msg);
-    }, Math.random() * 2500 + 1500);
-  }, 5000);
-}
-
-startChat();
+});
